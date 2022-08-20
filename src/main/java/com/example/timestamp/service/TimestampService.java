@@ -55,6 +55,7 @@ public class TimestampService {
             entity.setStatus(HttpStatus.OK.value());
             return repository.save(entity);
         }catch (Exception e){
+            log.error("Timestampservice insert database");
             entity.setStatus(HttpStatus.EXPECTATION_FAILED.value());
             throw stampException.database();
         }

@@ -2,6 +2,7 @@ package com.example.timestamp.business;
 
 import com.example.timestamp.Entity.Timestamp;
 import com.example.timestamp.exception.Baseexception;
+import com.example.timestamp.exception.stampException;
 import com.example.timestamp.mapper.TimestampMapper;
 import com.example.timestamp.model.TimestampModel;
 import com.example.timestamp.service.TimestampService;
@@ -16,8 +17,13 @@ public class TimestampBusiness {
     private TimestampService timestampService;
 
     public Timestamp register() throws Baseexception {
-        Timestamp timestamp = timestampService.create();
-        log.info("TimestampBusiness info");
-        return timestamp;
+        try{
+            Timestamp timestamp = timestampService.create();
+            log.info("TimestampBusiness info");
+            return timestamp;
+        }catch(Exception e){
+            log.error("timestamp Bussiness fail");
+            throw stampException.business();
+        }
     }
 }

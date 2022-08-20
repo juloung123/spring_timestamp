@@ -27,6 +27,7 @@ public class TimestampApi {
         try{
             return ResponseEntity.ok(response);
         }catch (Exception e){
+            log.error("Timestamp api error");
             throw stampException.api();
         }
     }

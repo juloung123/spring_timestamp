@@ -13,4 +13,8 @@ public class stampException extends Baseexception{
     public static stampException api(){
         return new stampException("api.erorr");
     }
+
+    public static stampException business(){
+        return new stampException("business.erorr");
+    }
 }
