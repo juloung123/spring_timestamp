@@ -9,16 +9,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 @Slf4j
 @Service
 public class TimestampBusiness {
     @Autowired
     private TimestampService timestampService;
-    private TimestampMapper timestampMapper;
-    public TimestampModel register() {
+
+    public Timestamp register() throws Baseexception {
         Timestamp timestamp = timestampService.create();
         log.info("TimestampBusiness info");
-        return timestampMapper.toRegisterResponse(timestamp);
+        return timestamp;
     }
 }

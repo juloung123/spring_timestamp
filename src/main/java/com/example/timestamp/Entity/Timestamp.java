@@ -3,6 +3,7 @@ package com.example.timestamp.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,5 +16,5 @@ public class Timestamp extends BaseEntity{
     private String timestamp;
 
     @Column(nullable = false, length = 30)
-    private Integer status;
+    private int status;
 }

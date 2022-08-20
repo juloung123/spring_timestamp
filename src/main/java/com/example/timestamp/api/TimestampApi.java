@@ -1,7 +1,9 @@
 package com.example.timestamp.api;
 
+import com.example.timestamp.Entity.Timestamp;
 import com.example.timestamp.business.TimestampBusiness;
 import com.example.timestamp.exception.Baseexception;
+import com.example.timestamp.exception.stampException;
 import com.example.timestamp.model.TimestampModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,14 @@ public class TimestampApi {
     private TimestampBusiness timebusiness;
 
     @GetMapping
-    public ResponseEntity<TimestampModel> gettimestamp(){
-        TimestampModel response = timebusiness.register();
+    public ResponseEntity<Timestamp> gettimestamp() throws Baseexception {
+        Timestamp response = timebusiness.register();
         log.info("gettimestamp Api info");
-        return ResponseEntity.ok(response);
+        try{
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            throw stampException.api();
+        }
     }
     //
 }
